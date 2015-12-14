@@ -16,7 +16,7 @@ untree:{{update ind:i,p:(ind!i) p from raze {if[1=count x`e;:enlist x];if[100h>t
 tree:{{select ind:ind[;0],p:p[;0],e:{$[1=count x;first x;x]}@'e from`g xgroup update g:@[ind;where p=max p;:;max p]from x}/[x] . 0,`e}
 
 addg:{[u] update g:@[ind;where p=max p;:;max p]from u}
-adata:{[u;data] update e:data e from addg[u] where not prev(:)~'e,g = max g,{$[x;y;z]}'[-11h=type@'e;e;`]in\:key data }
+adata:{[u;data] 1_update e:data e from (enlist`ind`p`e`g!(-1;-1;::;-1)),addg u where not prev(:)~'e,g = max g,{$[x;y;z]}'[-11h=type@'e;e;`]in\:key data }
 adefine:{[k;f;op] ((enlist k)!enlist f),op}
 
 atom:{[u;a]a:{x["j"$type y;`fnc] y} atom0 lj ([tipe:key a]fnc:value a);
@@ -30,7 +30,7 @@ operator:{[u;o]
  update e:o@'e from u where g = max g,99h<type@'e
  }
 
-udata:{[o;data;e;r]o:(`nme xkey operator0 lj([nme:key o]fnc:value o)) ;if[not o[`Colon;`e]~e 0;:data];data[e 1]:r;data}
+udata:{[o;data;e;r]o:(`nme xkey operator0 lj([nme:key o]fnc:value o)) ;if[not o[`Colon;`fnc]~e 0;:data];data[e 1]:r;data}
 eval0:{[e]if[1=count e;:first e];0 e}
 
 s:{[a;o;x]data:x`data;u:x`u;
