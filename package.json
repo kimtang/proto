@@ -1,0 +1,22 @@
+{
+  "name": "proto",
+  "version": "0.0.0",
+  "description": "q proto library",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [
+    "q library"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.3.1",
+    "qshell":"C:\\dev\\system\\grunt\\qshell"
+  }
+}
