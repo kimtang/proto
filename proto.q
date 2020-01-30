@@ -1,15 +1,13 @@
 
-/ meta:`name`uid`fname!(`proto;"G"$"bba6016b-6e88-48b7-a16f-ed1edc89544f";"proto.q")
 
 \d .proto
-
-meta0:`name`uid`fname!(`proto;"G"$"bba6016b-6e88-48b7-a16f-ed1edc89544f";"proto.q");
 
 operator0:1!update tipe:type@'e,fnc:e from update e:(first first parse@)@'e from flip`e`nme!flip 2 cut ("a!b";`ExclamationMark;"a#b";`Number;"a$b";`Dollar;"a%b";`Procenttecken;"a&b";`Ampersand;"a+'b";`SingleQuote;"a*b";`Multiply;"a+b";`Plus;"a,b";`Comma;"a-b";`Hyphen;"a . b";`Dot;"a+/b";`Slash;"a:b";`Colon;"a<b";`LessThan;"a=b";`Equals;"a>b";`GreaterThan;"a?b";`QuestionMark;"a@b";`At;"a^b";`Caret;"a _ b";`Underscore;"a|b";`VerticalBar;"a~b";`Tilde;"a+/:b";`EachRight;"a+\\:b";`EachLeft;"a+':b";`EachPrior;"a::b";`GenericNull)
 
 `.proto.operator0 insert (`Return;`Return;-11h;::);
 
-atom0:1!update fnc:(::) from{`num xasc x,update num:abs num,tipe:`${(upper x[0]),1_x}@'string tipe from x}([]num:neg 2+til 18; tipe:`boolean`guid`byte`short`int`long`real`float`char`symbol`timestamp`month`date`datetime`timespan`minute`second`time)
+atom0:1!update fnc:(::) from{`num xasc x,update num:abs num,tipe:`${(upper x[0]),1_x}@'string tipe from x} {select from x where not null tipe} update tipe:{ @[{ key x$() };x;`] }each "h"$abs num from ([]num:neg til 20)
+
 
 untree:{{update ind:i,p:(ind!i) p from raze {if[1=count x`e;:enlist x];if[100h>type first x`e;:enlist x]; update p:(p[0],1 _ ind) from ungroup enlist x} @'x}/[([]ind:til count x;p:0;e:x)]}
 
