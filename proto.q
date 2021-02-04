@@ -2,7 +2,7 @@
 
 \d .proto
 
-operator0:1!update tipe:type@'e,fnc:e from update e:(first first parse@)@'e from flip`e`nme!flip 2 cut ("a!b";`ExclamationMark;"a#b";`Number;"a$b";`Dollar;"a%b";`Procenttecken;"a&b";`Ampersand;"a+'b";`SingleQuote;"a*b";`Multiply;"a+b";`Plus;"a,b";`Comma;"a-b";`Hyphen;"a . b";`Dot;"a+/b";`Slash;"a:b";`Colon;"a<b";`LessThan;"a=b";`Equals;"a>b";`GreaterThan;"a?b";`QuestionMark;"a@b";`At;"a^b";`Caret;"a _ b";`Underscore;"a|b";`VerticalBar;"a~b";`Tilde;"a+/:b";`EachRight;"a+\\:b";`EachLeft;"a+':b";`EachPrior;"a::b";`GenericNull)
+operator0:1!update tipe:type@'e,fnc:e from update e:(first first parse@)@'e from flip`e`nme!flip 2 cut ("a!b";`ExclamationMark;"a#b";`Number;"a$b";`Dollar;"a%b";`Procenttecken;"a&b";`Ampersand;"a+'b";`SingleQuote;"a*b";`Multiply;"a+b";`Plus;"a,b";`Comma;"a-b";`Hyphen;"a . b";`Dot;"a+/b";`Slash;"a:b";`Colon;"a<b";`LessThan;"a=b";`Equals;"a>b";`GreaterThan;"a?b";`QuestionMark;"a@b";`At;"a^b";`Caret;"a _ b";`Underscore;"a|b";`VerticalBar;"a~b";`Tilde;"a+/:b";`EachRight;"a+\\:b";`EachLeft;"a+':b";`EachPrior;"a::b";`GenericNull;"enlist a";`Enlist;"flip a";`Flip)
 
 `.proto.operator0 insert (`Return;`Return;-11h;::);
 
@@ -24,7 +24,7 @@ atom:{[u;a]a:{x["j"$type y;`fnc] y} atom0 lj ([tipe:key a]fnc:value a);
 odefine:{[k;f;op] ((enlist k)!enlist f),op}
 
 operator:{[u;o]
- o:{x[y;`fnc]} operator0 lj ([nme:key o]fnc:value o);
+ o:{if[not y in (0!.proto.operator0)`e;:y ] ;x[y;`fnc]} operator0 lj ([nme:key o]fnc:value o);
  update e:o@'e from u where g = max g,99h<type@'e
  }
 
@@ -35,17 +35,18 @@ s:{[a;o;x]data:x`data;u:x`u;
  u0:adata[u]data;
  u1:atom[u0;a];
  u2:operator[u1;o];
- e:(`g xgroup u2)[max u2`p;`e];
+ e:(`g xgroup u2)[p0:max u2`p;`e];
  r:eval0 e;
  data:udata[o;data;e;r];
  u:update ind:ind[;0],p:p[;0],e:e[;0] from `g xgroup u2;
- u:delete g from update e:enlist r from u where g = max g;
+ u:delete g from update e:enlist r from u where g = p0;
  `u`data!(u;data)}
 
 getb:{exn:-1 _ 1 _ last f:get x;exn:$["["~exn 0;(1+first where "]"=exn) _ exn;exn]; `arg`exn!(f 1;exn)}
 
 proto_:{[a;o;exn;data]
  exn:untree@'$[";"~first exn ;1 _;enlist[(+;0;1);]] exn:parse exn;
+ exn:{update e:first each e from x where ((0h=type@'e) and (1={@[count;x;0]}@'e) and (11h=abs {type first x}@'e)) or (11h=type@'e) and 1=count@'e } @'exn;
  l:enlist[data] , -1_exn;
  data:{[a;o;x;y] s[a;o]/[`data`u!(x;y)] `data}[a;o]/[l];
  res:s[a;o]/[`u`data!(last exn;data )] [`u;0;`e];
@@ -63,3 +64,4 @@ proto0[6]:{[d;x0;x1;x2;x3;x4;x5]data:((::),d[`arg])!(::;x0;x1;x2;x3;x4;x5);proto
 proto0[7]:{[d;x0;x1;x2;x3;x4;x5;x6]data:((::),d[`arg])!(::;x0;x1;x2;x3;x4;x5;x6);proto_[d`a;d`o;d`exn;data]}
 
 proto:{[a;o;f]d:getb[f],`a`o!(a;o);proto0[count d`arg][d]  }
+prote:{[a;o;exn]d:`arg`exn`a`o!(1#`x;exn;a;o);proto0[count d`arg][d]  }
